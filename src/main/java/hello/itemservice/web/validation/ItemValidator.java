@@ -26,11 +26,11 @@ public class ItemValidator implements Validator {
             errors.rejectValue("itemName","required");
         }
 
-        if (item.getPrice() == null || item.getPrice() < 1000 || item.getPrice() > 1000000) {
+        if (item.getPrice() == null || item.getPrice() < 1000 || item.getPrice() > 1000000 ) {
             errors.rejectValue("price","range",new Object[]{1000,1000000},null);
         }
 
-        if (item.getQuantity() > 10000 || item.getQuantity() == null) {
+        if (item.getQuantity() == null || item.getQuantity() > 10000  ) {
             errors.rejectValue("quantity","max",new Object[]{9999},null);
         }
 

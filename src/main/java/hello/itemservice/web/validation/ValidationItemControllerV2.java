@@ -55,11 +55,11 @@ public class ValidationItemControllerV2 {
     }
 
     //BindingResult는 무조건 @ModelAttribute 다음에 와야함 -> 검증해야될 객체인 'target' 바로 다음에 온다.
-    //@PostMapping("/add")
+//    @PostMapping("/add")
     public String addItemV1(@ModelAttribute Item item,
-                            BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
+                            BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         //검증 오류 결과 보관
-        Map<String, String> errors = new HashMap<>();
+
         if (!StringUtils.hasText(item.getItemName())) {
             bindingResult.addError(new FieldError("item", "itemName", "상품 이름은 필수 입니다."));
         }
@@ -91,7 +91,7 @@ public class ValidationItemControllerV2 {
 
     //  @PostMapping("/add")
     public String addItemV2(@ModelAttribute Item item,
-                            BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
+                            BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         //검증 오류 결과 보관
         Map<String, String> errors = new HashMap<>();
         if (!StringUtils.hasText(item.getItemName())) {
@@ -171,7 +171,7 @@ public class ValidationItemControllerV2 {
 
 //    @PostMapping("/add")
     public String addItemV4 (@ModelAttribute Item item,
-                             BindingResult bindingResult, RedirectAttributes redirectAttributes,Model model) {
+                             BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         //검증 오류 결과 보관
 
         if (!StringUtils.hasText(item.getItemName())) {
@@ -207,7 +207,7 @@ public class ValidationItemControllerV2 {
 
 //    @PostMapping("/add")
     public String addItemV5 (@ModelAttribute Item item,
-                             BindingResult bindingResult, RedirectAttributes redirectAttributes,Model model) {
+                             BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
         itemValidator.validate(item,bindingResult);
 
@@ -226,7 +226,7 @@ public class ValidationItemControllerV2 {
 
     @PostMapping("/add")
     public String addItemV6 (@Validated @ModelAttribute Item item,
-                             BindingResult bindingResult, RedirectAttributes redirectAttributes,Model model) {
+                             BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
         //  검증에 실패하면  다시 입력 폼으로
         if (bindingResult.hasErrors()) {
